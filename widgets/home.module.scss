@@ -1,0 +1,308 @@
+@import '../styles/Theme.scss';
+
+.home {
+    background-color: $background-color;
+    color: $text-color;
+    height: 100vh;
+}
+
+.navigation {
+    position: relative;
+    width: 100%;
+}
+
+.letter_container_base {
+    transition: padding $transition-duration ease-in-out, left $transition-duration ease-in-out, transform $transition-duration ease-in-out;
+    position: absolute;
+}
+
+.letter_container {
+    @extend .letter_container_base;
+    height: 4.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.letter_container_contracted {
+    @extend .letter_container_base;
+    left: 0%;
+    transform: translateX(0%);
+}
+
+.first_letter {
+    border-radius: 50%;
+    width: 4.8rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first_letter:hover {
+    background-color: $grey-2;
+}
+
+.contracted_letters {
+    overflow: hidden;
+    width: auto;
+    transition: width $transition-duration ease-in-out;
+}
+
+.letters {
+    overflow: hidden;
+    width: auto;
+    transition: width $transition-duration ease-in-out;
+}
+
+.header {
+    position: relative;
+    transition: max-width $transition-duration, max-height $transition-duration, padding $transition-duration;
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+}
+
+.contracted_header {
+    @extend .header;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.expanded_header {
+    @extend .header;
+    max-width: 100vw;
+}
+
+.header_base {
+    transition: opacity $transition-duration, max-height $transition-duration;
+}
+
+.home_icon {
+    position: absolute;
+    top: 1.5rem;
+    border-radius: 50%;   
+    transition: top $transition-duration, left $transition-duration, opacity $transition-duration;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.home_icon * {
+    width: 3rem;
+    height: 3rem;
+    z-index: 100;
+}
+
+.expanded_header .home_icon {
+    @extend .home_icon;
+    @extend .header_base;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+}
+
+.expanded_header .banner {
+    @extend .header_base;
+    opacity: 1;
+    min-width: 100vw;
+}
+
+.contracted_header .home_icon {
+    @extend .home_icon;
+    @extend .header_base;
+    opacity: 1;
+    left: 1rem;
+}
+
+.contracted_header .home_icon:hover::before {
+    content: "";
+    background-color: $primary-color;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0px 0px 3px 3px $primary-color;
+}
+
+.contracted_header .banner {
+    @extend .header_base;
+    opacity: 0;
+    min-width: 100vw;
+}
+
+.contracted_word_container_base {
+    transition: padding-left $transition-duration;
+}
+
+.contracted_word_container {
+    @extend .contracted_word_container_base;
+    border-radius: 50%;
+    width: 4.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width $transition-duration ease-in-out;
+}
+
+.word_container {
+    @extend .contracted_word_container_base;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes display-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hello {
+    opacity: 0;
+    animation: display-animation 1.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.intro {
+    opacity: 0;
+    animation: display-animation 1.5s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+.and_this {
+    opacity: 0;
+    animation: display-animation 1.5s;
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
+}
+
+.is_my_portfolio {
+    opacity: 0;
+    animation: display-animation 1.5s;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes nav-animation {
+    from {
+        max-height: 0px;
+    }
+    to {
+        max-height: 500px;
+    }
+}
+
+.nav {
+    max-height: 0;
+    overflow-y: hidden;
+    animation: nav-animation 1.5s;
+    animation-delay: 7.5s;
+    animation-fill-mode: forwards;
+}
+
+.contracted_words_done {
+    font-weight: bold;
+    font-size: $h6;
+}
+
+.word_base {
+    transition: border-radius $transition-duration, width $transition-duration;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contracted_words {
+    @extend .word_base;
+    font-size: $h6;
+    border-radius: 50%;
+    background-color: $grey-4;
+    font-weight: bold;
+    color: white;
+    height: 4.8rem;
+    width: 4.8rem;
+}
+
+.words {
+    @extend .word_base;
+    width: 80%;
+    font-size: $h6;
+    border-radius: 1rem;
+    background-color: $grey-4;
+    font-weight: bold;
+    color: white;
+    height: 4.8rem;
+}
+
+.words:hover {
+    color: $on-primary-color;
+    background-color: $primary-color;
+    box-shadow: 0px 0px 6px 6px $primary-color;
+    color: white;
+}
+
+.selected_word {
+    @extend .contracted_words;
+    background-color: $primary-color;
+}
+
+.selected_word:hover {
+    box-shadow: none;
+}
+
+.link {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    transition: top $transition-duration, left $transition-duration, padding-left $transition-duration, width $transition-duration, height $transition-duration;
+}
+
+.expanded_link {
+    @extend .link;
+}
+
+.contracted_link {
+    @extend .link;
+    border-radius: 50%;
+    background-color: $grey-4;
+    color: white;
+}
+
+.contracted_link:hover  {
+    color: $on-primary-color;
+    background-color: $primary-color;
+    box-shadow: 0px 0px 6px 6px $primary-color;
+    color: white;
+}
+
+.page_container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    top: 0px;
+}
+
+.page_canvas {
+    flex-grow: 1;
+    position: relative;
+}

@@ -1,0 +1,38 @@
+@import '../styles/Theme.scss';
+
+.project {
+    height: 5rem;
+    width: 100%;
+    padding-top: $m2;
+    transition: padding-top 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.project:hover {
+    padding-top: $m1;
+    z-index: 1;
+}
+
+.project::after {
+    content: "";
+    transition: width 0.5s ease-in-out;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.project:hover::after {
+    content: "";
+    background-color: $primary-color;
+    transition: width 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
