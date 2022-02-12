@@ -1,0 +1,43 @@
+@import '../styles/Theme.scss';
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $m3;
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+}
+
+.button_container span {
+    margin: 0px $m3;
+    color: $grey-2;
+}
+
+.button_container:hover span {
+    margin: 0px $m3;
+    color: $grey-1;
+}
+
+.button {
+    width: 3.6rem;
+    height: 3.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $grey-4;
+    border: none;
+    box-shadow: none;
+    color: $grey-2;
+}
+
+.button_container:hover .button {
+    background-color: $grey-1;
+}
+
+.icon {
+    width: 1.6rem;
+    height: 1.6rem;
+}

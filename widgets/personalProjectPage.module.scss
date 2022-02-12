@@ -1,16 +1,46 @@
 @import '../styles/Theme.scss';
 
-.project {
-    height: 5rem;
+.sections {
+    display: flex;
+    overflow-x: hidden;
     width: 100%;
-    padding-top: $m2;
-    transition: padding-top 0.2s;
-    position: relative;
-    z-index: 1;
+    scroll-behavior: smooth;
 }
 
+.sections > * {
+    min-width: 100%;
+}
+
+.project_button {
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    color: $white;
+    border: none;
+}
+
+.project {
+    padding: $m3;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    transition: padding-top 0.2s padding-bottom 0.2s;
+    position: relative;
+    z-index: 1;
+    margin-top: $m3;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project_description {
+    flex-grow: 1;
+    text-align: left;
+}
+
+
 .project:hover {
-    padding-top: $m1;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
     z-index: 1;
 }
 
@@ -35,4 +65,39 @@
     top: 0px;
     left: 0px;
     z-index: -1;
+}
+
+.description {
+    font-size: $body-1;
+}
+
+.technology {
+    font-size: $body-2;
+    color: $grey-3;
+}
+
+.icon {
+    width: 15rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.image {
+    width: 35rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: $m3;
+}
+
+.project_reverse {
+    @extend .project;
+}
+
+.project_reverse .project_description {
+    text-align: right;
+}
+
+.alarm_app {
+    transition: max-height $transition-duration;
+    overflow-y: hidden;
 }

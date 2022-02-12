@@ -1,0 +1,38 @@
+@import '../styles/Theme.scss';
+
+.page {
+    width: 100%;
+    min-width: 100%;
+}
+
+.alarm_image {
+    height: 35rem;
+}
+
+.content {
+    display: flex;
+}
+
+.main_content {
+    margin-top: 0px;
+    margin-left: $m6;
+    margin-right: $m3;
+}
+
+.main_content :first-child{
+    margin-top: 0px;
+}
+
+.main_content a {
+    text-decoration: underline;
+    color: $primary-color;
+}
+
+.description {
+    font-size: $body-1;
+}
+
+.features {
+    font-size: $body-2;
+    color: $grey-2;
+}

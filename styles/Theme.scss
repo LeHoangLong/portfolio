@@ -5,8 +5,8 @@ $h4: var(--h4);
 $h5: var(--h4);
 $h6: var(--h5);
 
-$body-1: 1.8rem;
-$body-2: 1.6rem;
+$body-1: var(--body-1);
+$body-2: var(--body-2);
 
 $green: rgb(41,179,119);
 $grey-1: rgb(205,209,204);

@@ -11,12 +11,6 @@ export const Page = (props: PageProps) => {
     let sectionClassName = props.show ? styles.section_shown : styles.section_hidden
     return (
         <section className={ sectionClassName }>
-            <header>
-                <h1 className={ styles.title }>
-                    { props.title }
-                </h1>
-            </header>
-
             { props.children }
         </section>
     )

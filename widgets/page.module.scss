@@ -1,20 +1,24 @@
 @import '../styles/Theme.scss';
 
 .title {
-    margin-bottom: 0px;
+    margin-bottom: 1.5rem;
+    margin-left: 0px;
 }
 
 .section {
-    transition: top $transition-duration, opacity $transition-duration;
+    transition: top $transition-duration, opacity $transition-duration, max-height $transition-duration;
     position: absolute;
     height: 100vh;
     width: 100%;
+    padding-left: $m6;
+    padding-right: $m6;
 }
 
 .section_shown {
     @extend .section;
     top: 0;
     opacity: 1;
+    overflow-y: auto;
 }
 
 .section_hidden {
@@ -22,4 +26,5 @@
     top: 10%;
     opacity: 0;
     pointer-events: none;
+    overflow-y: hidden;
 }

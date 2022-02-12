@@ -48,7 +48,7 @@ const Link = (props: LinkProps) => {
             if (props.isContracted) {
                 setWordLength(firstLetterRef.current.getBoundingClientRect().width)
             } else {
-                setWordLength(200)
+                setWordLength(250)
             }
         }
     }, [props.isContracted, props.width, firstLetterRef])
@@ -180,7 +180,7 @@ export const Home = () => {
                 </nav>
 
                 <div className={ styles.page_container } style={{ zIndex: 0 }}>
-                    <div style={{width: `${linkWidth * 1.5}rem`}}></div>
+                    <div style={{width: `${5 * 1.5}rem`}}></div>
                     <div className={ styles.page_canvas }>
                         <Page title="Work experience" show={ isShowChild && selectedLinkIndex === 0 }>
                             <p>Ok</p>
