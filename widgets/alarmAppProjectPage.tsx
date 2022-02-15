@@ -34,7 +34,7 @@ export const AlarmAppProject = (props: AlarmAppProjectProps) => {
                         <ul className={ styles.features }>
                             <li>
                                 <p>
-                                    60FPS alarm app for Vietnamese
+                                    60FPS alarm app for Vietnamese made in Flutter
                                 </p>
                             </li>
                             <li>

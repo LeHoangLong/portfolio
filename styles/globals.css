@@ -9,6 +9,21 @@
   --body-1: 1.6rem;
   --body-2: 1.4rem;
   line-height: 1.5;
+
+  --green: rgb(41,179,119);
+  --green-2: rgba(41,179,119, 0.6);
+  --grey-1: rgb(205,209,204);
+  --grey-2: rgb(140,140,148);
+  --grey-3: rgb(110,109,110);
+  --grey-4: rgb(34,38,38);
+  --grey-5: rgb(23,24,26);
+  --white: rgb(207,207,208);
+
+  --background-color: var(--grey-5);
+  --text-color: var(--white);
+
+  --primary-color: var(--green);
+  --on-primary-color: var(--white);
 }
 
 @font-face {
@@ -62,4 +77,29 @@ h5 {
 
 h6 {
   font-size: var(--h6);
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  width: 0rem;
+}
+
+::-webkit-scrollbar-track:hover {
+  width: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--green-2);
+  border-radius: 5000px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green);
 }

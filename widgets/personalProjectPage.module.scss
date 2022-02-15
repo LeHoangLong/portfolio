@@ -9,6 +9,7 @@
 
 .sections > * {
     min-width: 100%;
+    margin-right: $m6;
 }
 
 .project_button {
@@ -97,7 +98,7 @@
     text-align: right;
 }
 
-.alarm_app {
+.project_page {
     transition: max-height $transition-duration;
     overflow-y: hidden;
 }
