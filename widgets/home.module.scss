@@ -61,10 +61,7 @@
     position: relative;
     transition: max-width $transition-duration, max-height $transition-duration, padding $transition-duration;
     overflow: hidden;
-    display: flex;
-    text-align: center;
     padding-top: 6rem;
-    padding-bottom: 3rem;
 }
 
 .contracted_header {
@@ -172,45 +169,8 @@
     }
 }
 
-.hello {
-    opacity: 0;
-    animation: display-animation 1.5s;
-    animation-delay: 1.5s;
-    animation-fill-mode: forwards;
-}
-
-.intro {
-    opacity: 0;
-    animation: display-animation 1.5s;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-}
-
-.and_this {
-    opacity: 0;
-    animation: display-animation 1.5s;
-    animation-delay: 4.5s;
-    animation-fill-mode: forwards;
-}
-
-.is_my_portfolio {
-    opacity: 0;
-    animation: display-animation 1.5s;
-    animation-delay: 6s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes nav-animation {
-    from {
-        max-height: 0px;
-    }
-    to {
-        max-height: 500px;
-    }
-}
-
 .nav {
-    max-height: 0;
+    max-height: 500px;
     overflow-y: hidden;
     animation: nav-animation 1.5s;
     animation-delay: 7.5s;
@@ -305,4 +265,47 @@
 .page_canvas {
     flex-grow: 1;
     position: relative;
+}
+
+.name {
+    margin: 0px;
+}
+
+.icon {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity $transition-duration, height $transition-duration, width $transition-duration, top $transition-duration, left $transition-duration;
+}
+
+.icon > div {
+    transition: transform $transition-duration;
+}
+
+.main_child_base {
+    transition: opacity $transition-duration;
+}
+
+.main_child_hidden {
+    @extend .main_child_base;
+    opacity: 0;
+}
+
+.main_child {
+    @extend .main_child_base;
+    opacity: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: $m6;
+}
+
+.persistent_icon {
+    pointer-events: none;    
 }

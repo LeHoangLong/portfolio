@@ -7,6 +7,8 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { clearInterval } from "timers"
 import { Page } from "./page"
 import { PersonalProjectPage } from "./personalProjectPage"
+import { WorkExperiencePage } from "./workExperiencePage"
+import { Icon } from "./icon"
 
 interface LinkProps {
     name: string
@@ -18,6 +20,7 @@ interface LinkProps {
     isContracted: boolean
     isSelected: boolean
     zIndex: number
+    justifyContent: string
 }
 
 const Link = (props: LinkProps) => {
@@ -74,6 +77,7 @@ const Link = (props: LinkProps) => {
         width: props.width + 'rem',
         height: props.height + 'rem',
         zIndex: props.zIndex,
+        justifyContent: props.justifyContent,
     }}  className={linkClassName} onClick={props.onClick}>
         <div className={ wordClassName } style={{
         }}>
@@ -81,7 +85,7 @@ const Link = (props: LinkProps) => {
                 maxWidth: wordLength + 'px', 
                 transition: 'max-width 1s',
                 overflow: 'hidden',
-                display: 'inline-block',
+                display: 'inline-block'
             }}>
                 { wordsElm }
             </div>
@@ -98,9 +102,9 @@ export const Home = () => {
 
     useEffect(() => {
         if (window !== undefined) {
-            setExapandedLinkWidth(window.innerWidth / 30);
+            setExapandedLinkWidth(window.innerWidth / 30 - 2);
             let handler = () => {
-                setExapandedLinkWidth(window.innerWidth / 30);
+                setExapandedLinkWidth(window.innerWidth / 30 - 2);
             }
             window.addEventListener('resize', handler)
 
@@ -130,6 +134,26 @@ export const Home = () => {
     let contractedSize = 9
     let normalHeight = 5
 
+    let [iconClass, setIconClass] = useState(styles.icon)
+    let [iconZoom, setIconZoom] = useState(1)
+    let [iconContainerSize, setIconContainerSize] = useState('100%')
+    let [mainClass, setMainClass] = useState(styles.main_child_hidden)
+    let persistentIconRef = useRef<HTMLDivElement>(null)
+    let [iconTop, setIconTop] = useState(0)
+    let [iconLeft, setIconLeft] = useState(0)
+    let [displayPersistentIcon, setDisplayPersistentIcon] = useState(false)
+
+    function onIconAnimationFinished() {
+        setMainClass(styles.main_child)
+        setIconContainerSize('12rem')
+        setIconZoom(0.5)
+        setIconTop(persistentIconRef.current!.getBoundingClientRect().top)
+        setIconLeft(persistentIconRef.current!.getBoundingClientRect().left)
+        setTimeout(() => {
+            setDisplayPersistentIcon(true)
+        }, 2000)
+    }
+
     return <React.Fragment>
         <Head>
             <title>Le Hoang Long</title>
@@ -143,23 +167,27 @@ export const Home = () => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={ styles.home }>
-            <div  className={ styles.main_child }>
+            <div className={ iconClass } style={{
+                width: iconContainerSize,
+                height: iconContainerSize,
+                top: `${iconTop}px`,
+                left: `${iconLeft}px`,
+                opacity: isShowChild? 0: 1,
+            }}>
+                <div style={{transform: `scale(${iconZoom}, ${iconZoom})`}}>
+                    <Icon durationMs={2000} onAnimationFinished={onIconAnimationFinished}></Icon>
+                </div>
+            </div>
+            <div  className={ mainClass }>
                 <header className={ isShowChild? styles.contracted_header : styles.expanded_header } style={{
-                    maxHeight: isShowChild ? `${contractedSize}rem` : '25rem',
+                    maxHeight: isShowChild ? `${contractedSize}rem` : '50rem',
                 }}>
-                    <div className={ styles.banner }>
-                        <h2>
-                            <span className={ styles.hello }>Hi, my name is Le Hoang Long.</span>
-                            <span>&nbsp;</span>
-                            <span className={ styles.intro }>
-                                I'm a software engineer from Vietnam
-                            </span>
-                        </h2>
-                        <h2>
-                            <span className={ styles.and_this }>And this</span>
-                            <span>&nbsp;</span>
-                            <span className={ styles.is_my_portfolio }>is my portfolio</span>
-                        </h2>
+                    <div className={ styles.banner } style={{
+                        marginLeft: '2rem',
+                    }}>
+                        <p className={ styles.hello }>Hi, I'm</p>
+                        <h1 className={ styles.name }>Le Hoang Long</h1>
+                        <p>I'm a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
                     </div>
 
                     <button onClick={ homeIconClickHandler } className={ styles.home_icon } style={{ width: '5rem', height: `${contractedSize}rem` }}>
@@ -173,9 +201,9 @@ export const Home = () => {
                 <nav className={ styles.nav }>
                     <ul className={ styles.navigation }>
                         <div style={{ minHeight: `${isShowChild ? contractedSize * 3 : contractedSize}rem`}}></div>
-                        <Link zIndex={ 100 } isSelected={ selectedLinkIndex === 0 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 0 + (isShowChild? 1 : 0)}rem`} onClick={() => linkClickHandler(0) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 0}rem`} name="Work experience"></Link>
-                        <Link zIndex={ 100 } isSelected={ selectedLinkIndex === 1 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 1 + (isShowChild? 5: 0)}rem`} onClick={() => linkClickHandler(1) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 1}rem`} name="Personal projects"></Link>
-                        <Link zIndex={ 100 } isSelected={ selectedLinkIndex === 2 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 2 + (isShowChild? 9: 0)}rem`} onClick={() => linkClickHandler(2) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 2}rem`} name="Contact me"></Link>
+                        <Link justifyContent='left' zIndex={ 100 } isSelected={ selectedLinkIndex === 0 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 0 + (isShowChild? 1 : 0)}rem`} onClick={() => linkClickHandler(0) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 0 + 2}rem`} name="Work experience"></Link>
+                        <Link justifyContent='center' zIndex={ 100 } isSelected={ selectedLinkIndex === 1 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 1 + (isShowChild? 5: 0)}rem`} onClick={() => linkClickHandler(1) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 1 + 2}rem`} name="Personal projects"></Link>
+                        <Link justifyContent='right' zIndex={ 100 } isSelected={ selectedLinkIndex === 2 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 2 + (isShowChild? 9: 0)}rem`} onClick={() => linkClickHandler(2) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 2 + 2}rem`} name="Contact me"></Link>
                     </ul>
                 </nav>
 
@@ -183,13 +211,21 @@ export const Home = () => {
                     <div style={{width: `${5 * 1.5}rem`}}></div>
                     <div className={ styles.page_canvas }>
                         <Page title="Work experience" show={ isShowChild && selectedLinkIndex === 0 }>
-                            <p>Ok</p>
+                            <WorkExperiencePage/>
                         </Page>
                         <Page title="Personal projects" show={ isShowChild && selectedLinkIndex === 1 }>
                             <PersonalProjectPage></PersonalProjectPage>
                         </Page>
                     </div>
                 </div>
+
+                <footer className={ styles.footer }>
+                    <div className={ styles.persistent_icon } ref={ persistentIconRef }>
+                        <div style={{zoom: 0.5, visibility: 'hidden'}}>
+                            <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </main>
     </React.Fragment>
