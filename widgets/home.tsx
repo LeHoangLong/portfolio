@@ -224,6 +224,22 @@ export const Home = () => {
                             <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
                         </div>
                     </div>
+
+                    <div className={ styles.contact_icons } style={{
+                        opacity: isShowChild? 0: 1,
+                    }}>
+                        <div className={ styles.contact_icon }>
+                            <a target='_blank' href='https://github.com/LeHoangLong?tab=repositories'>
+                                <img className={ styles.svg } src='/github.svg' />
+                            </a>
+                        </div>
+
+                        <div className={ styles.contact_icon }>
+                            <a target='_blank' href='https://linkedin.com/in/hoang-long-le-3a6255a3'>
+                                <img className={ styles.svg } src='/linkedin.svg' />
+                            </a>
+                        </div>
+                    </div>
                 </footer>
             </div>
         </main>
