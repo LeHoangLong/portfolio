@@ -1,0 +1,156 @@
+@import '../styles/Theme.scss';
+
+.title {
+    margin-bottom: $m3;
+}
+
+.contact_me_form_container {
+    width: 80%;
+    position: relative;
+}
+
+.form_title {
+    margin-top: $m2;
+    margin-bottom: $m2;
+}
+
+.contact_me_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_row {
+    margin-top: $m3;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_row input, .form_row textarea {
+    padding: $m2;
+    font-size: $body-1;
+    margin-top: $m3;
+}
+
+.form_row label {
+    font-weight: bold;
+    font-size: $body-1;
+}
+
+.submit_button {
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: $primary-color;
+    color: $on-primary-color;
+    padding: $m3;
+    width: 120px;
+    box-shadow: none;
+    border: none;
+    margin-top: $m6;
+    font-size: $body-1;
+}
+
+.error_message {
+    color: $error-color;
+    transition: max-height $transition-duration;
+}
+
+.loading_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sending_text {
+    font-size: $body-1;
+}
+
+@keyframes dot_1_animation {
+    0% {
+        opacity: 0;
+    }
+
+    24% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot_1 {
+    animation: dot_1_animation 2s infinite;
+}
+
+@keyframes dot_2_animation {
+    0% {
+        opacity: 0;
+    }
+
+    49% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot_2 {
+    animation: dot_2_animation 2s infinite;
+}
+
+@keyframes dot_3_animation {
+    0% {
+        opacity: 0;
+    }
+
+    74% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot_3 {
+    animation: dot_3_animation 2s infinite;
+}
+
+.thank_message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $grey-6;
+    padding: $m6;
+    border-radius: 10px;
+    font-weight: bold;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.thank_message_hide {
+    @extend .thank_message;
+    opacity: 0;
+    transition: opacity $transition-duration;
+}

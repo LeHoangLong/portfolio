@@ -14,10 +14,12 @@ $grey-2: var(--grey-2);
 $grey-3: var(--grey-3);
 $grey-4: var(--grey-4);
 $grey-5: var(--grey-5);
+$grey-6: var(--grey-6);
 $white: var(--white);
 
 $background-color: var(--grey-5);
 $text-color: var(--white);
+$error-color: var(--error-color);
 
 $primary-color: var(--green);
 $on-primary-color: var(--white);
@@ -31,3 +33,18 @@ $m6: 3rem;
 
 
 $transition-duration: 1s;
+
+.loading {
+    border: 8px solid $grey-3; /* Light grey */
+    border-top: 8px solid $primary-color; /* Blue */
+    border-bottom: 8px solid $primary-color; /* Blue */
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

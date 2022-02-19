@@ -17,6 +17,7 @@
   --grey-3: rgb(110,109,110);
   --grey-4: rgb(34,38,38);
   --grey-5: rgb(23,24,26);
+  --grey-6: rgb(10,10,10);
   --white: rgb(207,207,208);
 
   --background-color: var(--grey-5);
@@ -24,6 +25,8 @@
 
   --primary-color: var(--green);
   --on-primary-color: var(--white);
+
+  --error-color: red;
 }
 
 @font-face {
@@ -39,9 +42,15 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1.6rem;
+  box-sizing: border-box;
+}
+
+html,
+body,
+input,
+textarea {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  box-sizing: border-box;
 }
 
 a {
@@ -102,4 +111,9 @@ h6 {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--green);
+}
+
+.required_input::after {
+  content: " *";
+  color: var(--error-color);
 }

@@ -9,6 +9,7 @@ import { Page } from "./page"
 import { PersonalProjectPage } from "./personalProjectPage"
 import { WorkExperiencePage } from "./workExperiencePage"
 import { Icon } from "./icon"
+import { ContactMePage } from "./contactMePage"
 
 interface LinkProps {
     name: string
@@ -134,14 +135,12 @@ export const Home = () => {
     let contractedSize = 9
     let normalHeight = 5
 
-    let [iconClass, setIconClass] = useState(styles.icon)
     let [iconZoom, setIconZoom] = useState(1)
     let [iconContainerSize, setIconContainerSize] = useState('100%')
     let [mainClass, setMainClass] = useState(styles.main_child_hidden)
     let persistentIconRef = useRef<HTMLDivElement>(null)
     let [iconTop, setIconTop] = useState(0)
     let [iconLeft, setIconLeft] = useState(0)
-    let [displayPersistentIcon, setDisplayPersistentIcon] = useState(false)
 
     function onIconAnimationFinished() {
         setMainClass(styles.main_child)
@@ -149,9 +148,6 @@ export const Home = () => {
         setIconZoom(0.5)
         setIconTop(persistentIconRef.current!.getBoundingClientRect().top)
         setIconLeft(persistentIconRef.current!.getBoundingClientRect().left)
-        setTimeout(() => {
-            setDisplayPersistentIcon(true)
-        }, 2000)
     }
 
     return <React.Fragment>
@@ -167,7 +163,7 @@ export const Home = () => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={ styles.home }>
-            <div className={ iconClass } style={{
+            <div className={ styles.icon } style={{
                 width: iconContainerSize,
                 height: iconContainerSize,
                 top: `${iconTop}px`,
@@ -215,6 +211,9 @@ export const Home = () => {
                         </Page>
                         <Page title="Personal projects" show={ isShowChild && selectedLinkIndex === 1 }>
                             <PersonalProjectPage></PersonalProjectPage>
+                        </Page>
+                        <Page title="Contact me" show={ isShowChild && selectedLinkIndex === 2 }>
+                            <ContactMePage></ContactMePage>
                         </Page>
                     </div>
                 </div>

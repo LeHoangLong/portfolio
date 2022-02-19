@@ -2,7 +2,6 @@ import { faClock } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useEffect, useRef, useState } from "react"
 import styles from './personalProjectPage.module.scss'
-import Image from 'next/image'
 import { AlarmAppProject } from "./alarmAppProjectPage"
 import { EcommerceProjectPage } from "./ecommerceProjectPage"
 import { AppearOnScroll } from "./appearOnScroll"
