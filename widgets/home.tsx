@@ -10,6 +10,8 @@ import { PersonalProjectPage } from "./personalProjectPage"
 import { WorkExperiencePage } from "./workExperiencePage"
 import { Icon } from "./icon"
 import { ContactMePage } from "./contactMePage"
+import { FadeIn } from "./fadeIn"
+import { Hero, TransitionProvider } from "react-hero-transition"
 
 interface LinkProps {
     name: string
@@ -22,6 +24,18 @@ interface LinkProps {
     isSelected: boolean
     zIndex: number
     justifyContent: string
+}
+
+interface LinkHeroProps {
+    child1: React.ReactNode
+    child2: React.ReactNode
+    child1Or2: boolean
+}
+
+enum LinkHeroState {
+    showChild1,
+    showChild2,
+    heroAnimation
 }
 
 const Link = (props: LinkProps) => {
@@ -132,22 +146,23 @@ export const Home = () => {
         setIsShowChild(false)
     }
 
-    let contractedSize = 9
-    let normalHeight = 5
-
+    let [displayPersistentIcon, setDisplayPersistentIcon] = useState(false)
     let [iconZoom, setIconZoom] = useState(1)
     let [iconContainerSize, setIconContainerSize] = useState('100%')
-    let [mainClass, setMainClass] = useState(styles.main_child_hidden)
     let persistentIconRef = useRef<HTMLDivElement>(null)
     let [iconTop, setIconTop] = useState(0)
     let [iconLeft, setIconLeft] = useState(0)
+    let [displayFrontPage, setDisplayFrontPage] = useState(false)
 
     function onIconAnimationFinished() {
-        setMainClass(styles.main_child)
         setIconContainerSize('12rem')
         setIconZoom(0.5)
         setIconTop(persistentIconRef.current!.getBoundingClientRect().top)
         setIconLeft(persistentIconRef.current!.getBoundingClientRect().left)
+        setDisplayFrontPage(true)
+        setTimeout(() => {
+            setDisplayPersistentIcon(true)
+        }, 3000)
     }
 
     return <React.Fragment>
@@ -160,88 +175,117 @@ export const Home = () => {
                 as="font"
                 crossOrigin=""
             />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/logo.png" />
         </Head>
         <main className={ styles.home }>
-            <div className={ styles.icon } style={{
-                width: iconContainerSize,
-                height: iconContainerSize,
-                top: `${iconTop}px`,
-                left: `${iconLeft}px`,
-                opacity: isShowChild? 0: 1,
-            }}>
-                <div style={{transform: `scale(${iconZoom}, ${iconZoom})`}}>
-                    <Icon durationMs={2000} onAnimationFinished={onIconAnimationFinished}></Icon>
-                </div>
-            </div>
-            <div  className={ mainClass }>
-                <header className={ isShowChild? styles.contracted_header : styles.expanded_header } style={{
-                    maxHeight: isShowChild ? `${contractedSize}rem` : '50rem',
+            <TransitionProvider>
+                <div className={ styles.icon } style={{
+                    width: iconContainerSize,
+                    height: iconContainerSize,
+                    top: `${iconTop}px`,
+                    left: `${iconLeft}px`,
+                    opacity: isShowChild? 0: 1,
+                    visibility: displayPersistentIcon? 'hidden' : 'visible',
                 }}>
-                    <div className={ styles.banner } style={{
-                        marginLeft: '2rem',
-                    }}>
-                        <p className={ styles.hello }>Hi, I'm</p>
-                        <h1 className={ styles.name }>Le Hoang Long</h1>
-                        <p>I'm a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
-                    </div>
-
-                    <button onClick={ homeIconClickHandler } className={ styles.home_icon } style={{ width: '5rem', height: `${contractedSize}rem` }}>
-                        <div>
-                            <FontAwesomeIcon icon={ faHome }></FontAwesomeIcon>
-                        </div>
-                    </button>
-                </header>
-
-
-                <nav className={ styles.nav }>
-                    <ul className={ styles.navigation }>
-                        <div style={{ minHeight: `${isShowChild ? contractedSize * 3 : contractedSize}rem`}}></div>
-                        <Link justifyContent='left' zIndex={ 100 } isSelected={ selectedLinkIndex === 0 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 0 + (isShowChild? 1 : 0)}rem`} onClick={() => linkClickHandler(0) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 0 + 2}rem`} name="Work experience"></Link>
-                        <Link justifyContent='center' zIndex={ 100 } isSelected={ selectedLinkIndex === 1 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 1 + (isShowChild? 5: 0)}rem`} onClick={() => linkClickHandler(1) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 1 + 2}rem`} name="Personal projects"></Link>
-                        <Link justifyContent='right' zIndex={ 100 } isSelected={ selectedLinkIndex === 2 } height={ isShowChild? normalHeight: contractedSize  } isContracted={ isShowChild } top={`${linkTop * 2 + (isShowChild? 9: 0)}rem`} onClick={() => linkClickHandler(2) } width={linkWidth} left={`${isShowChild? 1: linkWidth * 2 + 2}rem`} name="Contact me"></Link>
-                    </ul>
-                </nav>
-
-                <div className={ styles.page_container } style={{ zIndex: 0 }}>
-                    <div style={{width: `${5 * 1.5}rem`}}></div>
-                    <div className={ styles.page_canvas }>
-                        <Page title="Work experience" show={ isShowChild && selectedLinkIndex === 0 }>
-                            <WorkExperiencePage/>
-                        </Page>
-                        <Page title="Personal projects" show={ isShowChild && selectedLinkIndex === 1 }>
-                            <PersonalProjectPage></PersonalProjectPage>
-                        </Page>
-                        <Page title="Contact me" show={ isShowChild && selectedLinkIndex === 2 }>
-                            <ContactMePage></ContactMePage>
-                        </Page>
+                    <div style={{transform: `scale(${iconZoom}, ${iconZoom})`}}>
+                        <Icon durationMs={2000} onAnimationFinished={onIconAnimationFinished}></Icon>
                     </div>
                 </div>
 
-                <footer className={ styles.footer }>
-                    <div className={ styles.persistent_icon } ref={ persistentIconRef }>
-                        <div style={{zoom: 0.5, visibility: 'hidden'}}>
-                            <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
+                <FadeIn show={ !isShowChild }>
+                    <section className={ styles.front_page } style={{ opacity: displayFrontPage? 1 : 0 }}>
+                        <header className={ styles.header }>
+                            <div className={ styles.banner }>
+                                <p className={ styles.hello }>Hi, I'm</p>
+                                <h1 className={ styles.name }>Le Hoang Long</h1>
+                                <p>I'm a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
+                            </div>
+                        </header>
+
+                        <nav className={ styles.nav_2 }>
+                            <ul className={ styles.navigation_2 }>
+                                <li>
+                                    {(() => {
+                                        if (!isShowChild) {
+                                            return <Hero id='0'><button onClick={() => linkClickHandler(0)}>Work experience</button></Hero>
+                                        } else {
+                                            return <button style={{ visibility: 'hidden' }} onClick={() => linkClickHandler(0)}>Work experience</button>
+                                        }
+                                    })()}
+                                </li>
+
+                                <li>
+                                    {!isShowChild && <Hero id='1'><button onClick={() => linkClickHandler(1)}>Personal projects</button></Hero>}
+                                </li>
+
+                                <li>
+                                    {!isShowChild && <Hero id='2'><button onClick={() => linkClickHandler(2)}>Contact me</button></Hero>}
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <footer className={ styles.footer }>
+                            <div className={ styles.persistent_icon } ref={ persistentIconRef } style={{
+                                visibility: displayPersistentIcon? 'visible' : 'hidden',
+                            }}>
+                                <div style={{zoom: 0.5}}>
+                                    <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
+                                </div>
+                            </div>
+
+                            <div className={ styles.contact_icons }>
+                                <div className={ styles.contact_icon }>
+                                    <a target='_blank' href='https://github.com/LeHoangLong?tab=repositories'>
+                                        <img className={ styles.svg } src='/github.svg' />
+                                    </a>
+                                </div>
+
+                                <div className={ styles.contact_icon }>
+                                    <a target='_blank' href='https://linkedin.com/in/hoang-long-le-3a6255a3'>
+                                        <img className={ styles.svg } src='/linkedin.svg' />
+                                    </a>
+                                </div>
+                            </div>
+                        </footer>
+                    </section>
+                </FadeIn>
+
+                    
+                <FadeIn show={ isShowChild }>
+                    <div className={ styles.page_container } style={{ zIndex: 0 }}>
+                        <div className={ styles. side_bar }>
+                            <button onClick={ homeIconClickHandler } className={ styles.home_icon }>
+                                <div>
+                                    <FontAwesomeIcon icon={ faHome }></FontAwesomeIcon>
+                                </div>
+                            </button>
+
+                            {(() => {
+                                if (isShowChild) {
+                                    return <Hero id='0'>
+                                        <button className={ selectedLinkIndex === 0? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(0)}>W</button>
+                                    </Hero>
+                                } else {
+                                    return <button className={ selectedLinkIndex === 0? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(0)}>W</button>
+                                }
+                            })()}
+                            {isShowChild && <Hero id='1'><button className={ selectedLinkIndex === 1? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(1)}>P</button></Hero>}
+                            {isShowChild && <Hero id='2'><button className={ selectedLinkIndex === 2? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(2)}>C</button></Hero>}
+                        </div>
+                        <div className={ styles.page_canvas }>
+                            <Page title="Work experience" show={ isShowChild && selectedLinkIndex === 0 }>
+                                <WorkExperiencePage/>
+                            </Page>
+                            <Page title="Personal projects" show={ isShowChild && selectedLinkIndex === 1 }>
+                                <PersonalProjectPage></PersonalProjectPage>
+                            </Page>
+                            <Page title="Contact me" show={ isShowChild && selectedLinkIndex === 2 }>
+                                <ContactMePage></ContactMePage>
+                            </Page>
                         </div>
                     </div>
-
-                    <div className={ styles.contact_icons } style={{
-                        opacity: isShowChild? 0: 1,
-                    }}>
-                        <div className={ styles.contact_icon }>
-                            <a target='_blank' href='https://github.com/LeHoangLong?tab=repositories'>
-                                <img className={ styles.svg } src='/github.svg' />
-                            </a>
-                        </div>
-
-                        <div className={ styles.contact_icon }>
-                            <a target='_blank' href='https://linkedin.com/in/hoang-long-le-3a6255a3'>
-                                <img className={ styles.svg } src='/linkedin.svg' />
-                            </a>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+                </FadeIn>
+            </TransitionProvider>
         </main>
     </React.Fragment>
 }
