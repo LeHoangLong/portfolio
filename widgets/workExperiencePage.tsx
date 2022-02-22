@@ -63,8 +63,8 @@ export const WorkExperiencePage = () => {
                         <article className={ styles.job }>
                             <header>
                                 <div className={ styles.job_title_and_company }>
-                                    <h4 className={ styles.job_title }>Bachelor of Engineering</h4>
-                                    <h4>National University of Singapore</h4>
+                                    <h5 className={ styles.job_title }>Bachelor of Engineering</h5>
+                                    <h5>National University of Singapore</h5>
                                 </div>
                                 <h6 className={ styles.job_period }>Jun 2014 - Jun 2018</h6>
                             </header>

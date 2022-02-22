@@ -253,7 +253,7 @@ export const Home = () => {
                     
                 <FadeIn show={ isShowChild }>
                     <div className={ styles.page_container } style={{ zIndex: 0 }}>
-                        <div className={ styles. side_bar }>
+                        <div className={ styles.side_bar }>
                             <button onClick={ homeIconClickHandler } className={ styles.home_icon }>
                                 <div>
                                     <FontAwesomeIcon icon={ faHome }></FontAwesomeIcon>
@@ -266,7 +266,7 @@ export const Home = () => {
                                         <button className={ selectedLinkIndex === 0? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(0)}>W</button>
                                     </Hero>
                                 } else {
-                                    return <button className={ selectedLinkIndex === 0? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(0)}>W</button>
+                                    return <button style={{ visibility: 'hidden' }} className={ selectedLinkIndex === 0? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(0)}>W</button>
                                 }
                             })()}
                             {isShowChild && <Hero id='1'><button className={ selectedLinkIndex === 1? styles.selected_page_initial : styles.page_initial } onClick={() => linkClickHandler(1)}>P</button></Hero>}

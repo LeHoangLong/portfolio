@@ -88,22 +88,24 @@ export const PersonalProjectPage = () => {
                         </article>
                     </button>
 
-                    <button className={ styles.project_button } onClick={ () =>  onLinkClick(setShowEcommercePage, ecommercePageRef) }>
-                        <article className={ styles.project_reverse }>
-                            <aside>
-                                <img className={ styles.image } src="/webstore.png" alt="Ecommerce front page"></img>
-                            </aside>
-                            <div className={ styles.project_description }>
-                                <header>
-                                    <h4>
-                                        Ecommerce website
-                                    </h4>
-                                </header>
-                                <p className={ styles.description }>Ecommerce website for home business</p>
-                                <p className={ styles.technology }>Technology: NodeJS, React, Typescript</p>
-                            </div>
-                        </article>
-                    </button>
+                    <AppearOnScroll>
+                        <button className={ styles.project_button } onClick={ () =>  onLinkClick(setShowEcommercePage, ecommercePageRef) }>
+                            <article className={ styles.project + ' ' + styles.reverse }>
+                                <div className={ styles.project_description }>
+                                    <header>
+                                        <h4>
+                                            Ecommerce website
+                                        </h4>
+                                    </header>
+                                    <p className={ styles.description }>Ecommerce website for home business</p>
+                                    <p className={ styles.technology }>Technology: NodeJS, React, Typescript</p>
+                                </div>
+                                <aside>
+                                    <img className={ styles.image } src="/webstore.png" alt="Ecommerce front page"></img>
+                                </aside>
+                            </article>
+                        </button>
+                    </AppearOnScroll>
 
                     <AppearOnScroll>
                         <button className={ styles.project_button } onClick={ () =>  onLinkClick(setShowDashboardPage, dashboardPageRef) }>

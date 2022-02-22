@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import styles from './alarmAppProjectPage.module.scss'
+import styles from './projectPage.module.scss'
 import { ProjectNavBar } from './projectNavBar'
 
 export interface AlarmAppProjectProps {
@@ -19,7 +17,7 @@ export const AlarmAppProject = (props: AlarmAppProjectProps) => {
 
                 <div className={ styles.content }>
                     <aside>
-                        <img className={ styles.alarm_image } src='/alarm_app.png' alt='Alarm app'></img>
+                        <img className={ styles.image } src='/alarm_app.png' alt='Alarm app'></img>
                     </aside>
 
                     <div className={ styles.main_content }>

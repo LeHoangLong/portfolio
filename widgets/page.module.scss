@@ -8,10 +8,11 @@
 .section {
     transition: top $transition-duration, opacity $transition-duration, max-height $transition-duration;
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     padding-left: $m6;
     padding-right: $m6;
+    padding-bottom: $m6;
 }
 
 .section_shown {
