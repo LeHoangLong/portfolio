@@ -1,5 +1,5 @@
 import Head from "next/head"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import styles from './home.module.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -36,76 +36,6 @@ enum LinkHeroState {
     showChild1,
     showChild2,
     heroAnimation
-}
-
-const Link = (props: LinkProps) => {
-    let words = props.name.split(' ')
-    let wordsElm: React.ReactNode[] = []
-    let letterCount = 0
-    let [wordLength, setWordLength] = useState(0)
-    let firstLetterRef = useRef<HTMLSpanElement>(null)
-
-    words.forEach((word: string, index) => {
-        for (let i = 0; i < word.length; i++) {
-            if (letterCount == 0) {
-                wordsElm.push(<span key={letterCount} ref={ firstLetterRef }>{ word[i] }</span>)
-            } else {
-                wordsElm.push(<span key={letterCount}>{ word[i] }</span>)
-            }
-            letterCount += 1
-        }
-
-        if (index != words.length - 1) {
-            wordsElm.push(<span key={letterCount}>&nbsp;</span>)
-            letterCount += 1
-        }
-    })
-
-    useEffect(() => {
-        if (firstLetterRef.current) {
-            if (props.isContracted) {
-                setWordLength(firstLetterRef.current.getBoundingClientRect().width)
-            } else {
-                setWordLength(250)
-            }
-        }
-    }, [props.isContracted, props.width, firstLetterRef])
-
-    let [isContractedDone, setIsContractedDone] = useState(false)
-    useEffect(() => {
-        if (props.isContracted) {
-            let timeout = setTimeout(() => {
-                setIsContractedDone(true)
-            }, 1000)
-            return () => clearTimeout(timeout)
-        } else {
-            setIsContractedDone(false)
-        }
-    }, [props.isContracted])
-
-    let linkClassName = isContractedDone? styles.contracted_link : styles.expanded_link
-    let wordClassName = props.isContracted? props.isSelected ? styles.selected_word : styles.contracted_words : styles.words
-    
-    return <li style={{
-        top: props.top,
-        left: props.left,
-        width: props.width + 'rem',
-        height: props.height + 'rem',
-        zIndex: props.zIndex,
-        justifyContent: props.justifyContent,
-    }}  className={linkClassName} onClick={props.onClick}>
-        <div className={ wordClassName } style={{
-        }}>
-            <div style={{ 
-                maxWidth: wordLength + 'px', 
-                transition: 'max-width 1s',
-                overflow: 'hidden',
-                display: 'inline-block'
-            }}>
-                { wordsElm }
-            </div>
-        </div>
-    </li>
 }
 
 export const Home = () => {
@@ -154,7 +84,7 @@ export const Home = () => {
     let [iconLeft, setIconLeft] = useState(0)
     let [displayFrontPage, setDisplayFrontPage] = useState(false)
 
-    function onIconAnimationFinished() {
+    let onIconAnimationFinished = useCallback(() => {
         setIconContainerSize('12rem')
         setIconZoom(0.5)
         setIconTop(persistentIconRef.current!.getBoundingClientRect().top)
@@ -163,7 +93,7 @@ export const Home = () => {
         setTimeout(() => {
             setDisplayPersistentIcon(true)
         }, 3000)
-    }
+    }, [])
 
     return <React.Fragment>
         <Head>
@@ -196,9 +126,9 @@ export const Home = () => {
                     <section className={ styles.front_page } style={{ opacity: displayFrontPage? 1 : 0 }}>
                         <header className={ styles.header }>
                             <div className={ styles.banner }>
-                                <p className={ styles.hello }>Hi, I'm</p>
+                                <p className={ styles.hello }>Hi, I&apos;m</p>
                                 <h1 className={ styles.name }>Le Hoang Long</h1>
-                                <p>I'm a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
+                                <p>I&apos;m a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
                             </div>
                         </header>
 
@@ -235,14 +165,14 @@ export const Home = () => {
 
                             <div className={ styles.contact_icons }>
                                 <div className={ styles.contact_icon }>
-                                    <a target='_blank' href='https://github.com/LeHoangLong?tab=repositories'>
-                                        <img className={ styles.svg } src='/github.svg' />
+                                    <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong?tab=repositories'>
+                                        <img alt="Github icon" className={ styles.svg } src='/github.svg' />
                                     </a>
                                 </div>
 
                                 <div className={ styles.contact_icon }>
-                                    <a target='_blank' href='https://linkedin.com/in/hoang-long-le-3a6255a3'>
-                                        <img className={ styles.svg } src='/linkedin.svg' />
+                                    <a rel="noopener noreferrer" target='_blank' href='https://linkedin.com/in/hoang-long-le-3a6255a3'>
+                                        <img alt="LinkedIn icon" className={ styles.svg } src='/linkedin.svg' />
                                     </a>
                                 </div>
                             </div>

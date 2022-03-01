@@ -62,17 +62,17 @@ export const AlarmAppProject = (props: AlarmAppProjectProps) => {
                             </li>
                             <li>
                                 <p>
-                                    Available for download at <a target='_blank' href='https://play.google.com/store/apps/details?id=com.learn_english_alarm'>https://play.google.com/store/apps/details?id=com.learn_english_alarm</a>
+                                    Available for download at <a rel="noopener noreferrer" target='_blank' href='https://play.google.com/store/apps/details?id=com.learn_english_alarm'>https://play.google.com/store/apps/details?id=com.learn_english_alarm</a>
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Main app github <a target='_blank' href='https://github.com/LeHoangLong/alarm-app'>https://github.com/LeHoangLong/alarm-app</a>
+                                    Main app github <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong/alarm-app'>https://github.com/LeHoangLong/alarm-app</a>
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Admin app github <a target='_blank' href='https://github.com/LeHoangLong/alarm_app_admin'>https://github.com/LeHoangLong/alarm_app_admin</a>
+                                    Admin app github <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong/alarm_app_admin'>https://github.com/LeHoangLong/alarm_app_admin</a>
                                 </p>
                             </li>
                         </ul>

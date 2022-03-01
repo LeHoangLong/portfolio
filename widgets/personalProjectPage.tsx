@@ -31,7 +31,7 @@ export const PersonalProjectPage = () => {
         }, 100)
     }
 
-    function generateUseEffect(show: boolean, shownSetter: (arg: boolean) => void) {
+    function useGenerateUseEffect(show: boolean, shownSetter: (arg: boolean) => void) {
         useEffect(() => {
             if (show) {
                 shownSetter(true)
@@ -49,12 +49,12 @@ export const PersonalProjectPage = () => {
 
                 return () => clearTimeout(timeout)
             }
-        }, [show])
+        }, [show, shownSetter])
     }
 
-    generateUseEffect(showAlarmPage, setAlarmPageShown)
-    generateUseEffect(showEcommercePage, setEcommercePageShown)
-    generateUseEffect(showDashboardPage, setDashboardPageShown)
+    useGenerateUseEffect(showAlarmPage, setAlarmPageShown)
+    useGenerateUseEffect(showEcommercePage, setEcommercePageShown)
+    useGenerateUseEffect(showDashboardPage, setDashboardPageShown)
 
 
     return (

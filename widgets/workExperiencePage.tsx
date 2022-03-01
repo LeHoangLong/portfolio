@@ -70,7 +70,7 @@ export const WorkExperiencePage = () => {
                             </header>
 
                             <ul>
-                                <li>First class's honours</li>
+                                <li>First class&apos;s honours</li>
                                 <li>CAP: 4.63 / 5.00</li>
                             </ul>
                         </article>

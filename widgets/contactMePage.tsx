@@ -79,7 +79,7 @@ export const ContactMePage = () => {
                 <article className={ styles.contact_me_form_container } style={{ visibility: isLoading? 'hidden' : 'visible' }}>
                     <header>
                         <h6 className={ styles.form_title }>
-                            If you'are interested, please leave me a message here
+                            If you are interested, please leave me a message here
                         </h6>
                     </header>
                     <form className={ styles.contact_me_form } onSubmit={ sendContact } >

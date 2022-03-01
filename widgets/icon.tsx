@@ -110,7 +110,7 @@ export const Icon = (props: IconProps) => {
                 }
             }
         }
-    }, [ref.current])
+    }, [props.onAnimationFinished, props.durationMs, size])
         
         
     return (

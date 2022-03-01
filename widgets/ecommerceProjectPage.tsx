@@ -25,7 +25,7 @@ export const EcommerceProjectPage = (props: EcommerceProjectPageProp) => {
                             My mom is a small business owner. I wanted to help her improve
                             her sales as well as make a portfolio project. And thus this project
                             is commenced. However, being a rather low-tech person, she is currently unable to
-                            make use of it &#128542;. I will support her on using this webpage once I'm back
+                            make use of it &#128542;. I will support her on using this webpage once I&apos;m back
                             to my home. Some features and technologies include:
                         </p>
 
@@ -46,37 +46,37 @@ export const EcommerceProjectPage = (props: EcommerceProjectPageProp) => {
 
                             <li>
                                 <p>
-                                    Send email to notify of customers' request
+                                    Send email to notify of customers&apos; request
                                 </p>
                             </li>
 
                             <li>
                                 <p>
-                                    Hosted on Google Cloud Container, deployed with Google Build Tool
+                                    Github action and Docker for continuous delivery
                                 </p>
                             </li>
 
                             <li>
                                 <p>
-                                    Website located at <a target='_blank' href='https://cuahangnhuquynh.com/'>https://cuahangnhuquynh.com/</a>
+                                    Demo Website located at <a rel="noopener noreferrer" target='_blank' href='https://ecommerce-demo.lehoanglong.net'>https://ecommerce-demo.lehoanglong.net/</a>
                                 </p>
                             </li>
 
                             <li>
                                 <p>
-                                    Data modeling available at <a target='_blank' href='https://dbdiagram.io/d/60918ee5b29a09603d135ccd'>https://dbdiagram.io/d/60918ee5b29a09603d135ccd</a>
+                                    Data modeling available at <a rel="noopener noreferrer" target='_blank' href='https://dbdiagram.io/d/60918ee5b29a09603d135ccd'>https://dbdiagram.io/d/60918ee5b29a09603d135ccd</a>
                                 </p>
                             </li>
 
                             <li>
                                 <p>
-                                    Backend github available at <a target='_blank' href='https://github.com/LeHoangLong/kim_thi_backend'>https://github.com/LeHoangLong/kim_thi_backend</a>
+                                    Backend github available at <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong/kim_thi_backend'>https://github.com/LeHoangLong/kim_thi_backend</a>
                                 </p>
                             </li>
 
                             <li>
                                 <p>
-                                    User frontend github available at <a target='_blank' href='https://github.com/LeHoangLong/kim_thi_frontend_user'>https://github.com/LeHoangLong/kim_thi_frontend_user</a>
+                                    User frontend github available at <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong/kim_thi_frontend_user'>https://github.com/LeHoangLong/kim_thi_frontend_user</a>
                                 </p>
                             </li>
                         </ul>
@@ -103,7 +103,15 @@ export const EcommerceProjectPage = (props: EcommerceProjectPageProp) => {
                         <ul className={ styles.features }>
                             <li>
                                 <p>
-                                    Github available at <a target='_blank' href='https://github.com/LeHoangLong/kim_thi_frontend_admin'>https://github.com/LeHoangLong/kim_thi_frontend_admin</a>
+                                    Github available at <a target='_blank' rel="noopener noreferrer" href='https://github.com/LeHoangLong/kim_thi_frontend_admin'>https://github.com/LeHoangLong/kim_thi_frontend_admin</a>
+                                </p>
+                            </li>
+
+                            <li>
+                                <p>
+                                    Demo Website located at <a rel="noopener noreferrer" target='_blank' href='https://ecommerce-demo.lehoanglong.net/admin'>https://ecommerce-demo.lehoanglong.net/admin</a><br/>
+                                    - Username: &nbsp;&nbsp;&nbsp;user123456<br/>
+                                    - Password: &nbsp;&nbsp;&nbsp;password123456
                                 </p>
                             </li>
                         </ul>

@@ -30,17 +30,17 @@ export const DashboardProjectPage = (props: DashboardProjectPageProp) => {
                         <ul className={ styles.features }>
                             <li>
                                 <p>
-                                    Demo page <a target='_blank' href='https://dashboard.lehoanglong.net'>https://dashboard.lehoanglong.net</a>
+                                    Demo page <a rel="noopener noreferrer" target='_blank' href='https://dashboard.lehoanglong.net'>https://dashboard.lehoanglong.net</a>
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Github page <a target='_blank' href='https://github.com/LeHoangLong/dashboard_fun'>https://github.com/LeHoangLong/dashboard_fun</a>
+                                    Github page <a rel="noopener noreferrer" target='_blank' href='https://github.com/LeHoangLong/dashboard_fun'>https://github.com/LeHoangLong/dashboard_fun</a>
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Credit to AR Shakir for their design <a target='_blank' href='https://dribbble.com/shots/16959094-learning-platform-dashboard-ui-concept'>https://dribbble.com/shots/16959094-learning-platform-dashboard-ui-concept</a>
+                                    Credit to AR Shakir for their design <a rel="noopener noreferrer" target='_blank' href='https://dribbble.com/shots/16959094-learning-platform-dashboard-ui-concept'>https://dribbble.com/shots/16959094-learning-platform-dashboard-ui-concept</a>
                                 </p>
                             </li>
                         </ul>
