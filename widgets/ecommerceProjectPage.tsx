@@ -22,11 +22,7 @@ export const EcommerceProjectPage = (props: EcommerceProjectPageProp) => {
 
                     <div className={ styles.main_content }>
                         <p className={ styles.description }>
-                            My mom is a small business owner. I wanted to help her improve
-                            her sales as well as make a portfolio project. And thus this project
-                            is commenced. However, being a rather low-tech person, she is currently unable to
-                            make use of it &#128542;. I will support her on using this webpage once I&apos;m back
-                            to my home. Some features and technologies include:
+                            Developed a website for my mom&apos; business. Some features and technologies include:
                         </p>
 
                         <ul className={ styles.features }>
@@ -58,7 +54,7 @@ export const EcommerceProjectPage = (props: EcommerceProjectPageProp) => {
 
                             <li>
                                 <p>
-                                    Demo Website located at <a rel="noopener noreferrer" target='_blank' href='https://ecommerce-demo.lehoanglong.net'>https://ecommerce-demo.lehoanglong.net/</a>
+                                    Website located at <a rel="noopener noreferrer" target='_blank' href='https://cuahangnhuquynh.com'>https://cuahangnhuquynh.com/</a>
                                 </p>
                             </li>
 
