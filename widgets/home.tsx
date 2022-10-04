@@ -117,7 +117,7 @@ export const Home = () => {
                     opacity: isShowChild? 0: 1,
                     visibility: displayPersistentIcon? 'hidden' : 'visible',
                 }}>
-                    <div style={{transform: `scale(${iconZoom}, ${iconZoom})`}}>
+                    <div style={{transform: `scale(${iconZoom})`}}>
                         <Icon durationMs={2000} onAnimationFinished={onIconAnimationFinished}></Icon>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ export const Home = () => {
                             <div className={ styles.banner }>
                                 <p className={ styles.hello }>Hi, I&apos;m</p>
                                 <h1 className={ styles.name }>Le Hoang Long</h1>
-                                <p>I&apos;m a Software Engineer from Vietnam who loves coding, especially C++, Flutter, and Typescript</p>
+                                <p>I&apos;m a Software Engineer from Vietnam who loves coding, especially C++, Golang, Flutter, and Typescript</p>
                             </div>
                         </header>
 
@@ -157,10 +157,9 @@ export const Home = () => {
                         <footer className={ styles.footer }>
                             <div className={ styles.persistent_icon } ref={ persistentIconRef } style={{
                                 visibility: displayPersistentIcon? 'visible' : 'hidden',
+                                transform: "scale(0.5)",
                             }}>
-                                <div style={{zoom: 0.5}}>
-                                    <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
-                                </div>
+                                <Icon durationMs={0} onAnimationFinished={onIconAnimationFinished}></Icon>
                             </div>
 
                             <div className={ styles.contact_icons }>
