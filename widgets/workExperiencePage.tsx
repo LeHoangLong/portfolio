@@ -16,8 +16,7 @@ export const WorkExperiencePage = () => {
                     <article className={ styles.job }>
                         <header>
                             <div className={ styles.job_title_and_company }>
-                                <h4 className={ styles.job_title }>Software Engineer</h4>
-                                <h4>Shopee</h4>
+                                <h4 className={ styles.job_title }>Backend Engineer at Shopee</h4>
                             </div>
                             <h6 className={ styles.job_period }>Aug 2022 - Oct 2022</h6>
                         </header>
@@ -33,8 +32,7 @@ export const WorkExperiencePage = () => {
                     <article className={ styles.job }>
                         <header>
                             <div className={ styles.job_title_and_company }>
-                                <h4 className={ styles.job_title }>Software Engineer</h4>
-                                <h4>Moovita</h4>
+                                <h4 className={ styles.job_title }>Software Engineer at Moovita</h4>
                             </div>
                             <h6 className={ styles.job_period }>May 2021 - Aug 2022</h6>
                         </header>
@@ -51,8 +49,7 @@ export const WorkExperiencePage = () => {
                     <article className={ styles.job }>
                         <header>
                             <div className={ styles.job_title_and_company }>
-                                <h4 className={ styles.job_title }>Embedded Software Engineer</h4>
-                                <h4>GT Robots</h4>
+                                <h4 className={ styles.job_title }>Embedded Software Engineer at GT Robots</h4>
                             </div>
                             <h6 className={ styles.job_period }>Jul 2018 - May 2021</h6>
                         </header>
